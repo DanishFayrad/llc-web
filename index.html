@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Business Portal | LTD & LLC Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> SmartPortal<span>Solutions</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+                    <li><a href="#" onclick="navigateTo('services')" class="nav-link-protected">Services</a></li>
+                    <li><a href="#" onclick="navigateTo('application')" class="nav-link-protected">Apply Now</a></li>
+                    <li><a href="#" onclick="navigateTo('contact')">Contact</a></li>
+                    <li><a href="#" onclick="navigateTo('admin')" class="nav-admin">Admin</a></li>
+                </ul>
+            </nav>
+            <div class="nav-action">
+                <span id="user-status-badge">Guest</span>
+                <button id="access-btn" class="btn-primary" onclick="navigateTo('payment')">Get Access</button>
+                <button id="logout-btn" class="btn-secondary hidden" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main id="main-content">
+
+        <!-- SECTION 1: HOME / LANDING -->
+        <section id="home" class="page-section active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>Professional Business Registration Services</h1>
+                    <p>Expert guidance for LTD and LLC company formation. Streamline your business setup with our comprehensive resources and dedicated support.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary btn-lg" onclick="navigateTo('payment')">
+                            <i class="fas fa-lock-open"></i> Unlock Full Access
+                        </button>
+                        <button class="btn-outline" onclick="navigateTo('contact')">Contact Us</button>
+                    </div>
+                    <div class="trust-badges">
+                        <span><i class="fas fa-shield-alt"></i> Secure Payment</span>
+                        <span><i class="fas fa-clock"></i> Fast Processing</span>
+                        <span><i class="fas fa-check-circle"></i> Verified Experts</span>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Using a placeholder business image -->
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Business Growth">
+                </div>
+            </div>
+
+            <div class="features-bar">
+                <div class="container">
+                    <div class="feature-item">
+                        <i class="fas fa-building"></i>
+                        <h4>LTD Formation</h4>
+                        <p>Register your Private Limited Company.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-file-signature"></i>
+                        <h4>LLC Registration</h4>
+                        <p>Limited Liability Company setup made easy.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Consultation</h4>
+                        <p>Get advice from business experts.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-folder-open"></i>
+                        <h4>Documentation</h4>
+                        <p>Complete guidance on legal paperwork.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PAYMENT PAGE -->
+        <section id="payment" class="page-section">
+            <div class="container form-container">
+                <div class="form-header">
+                    <h2>Unlock Premium Access</h2>
+                    <p>Pay a one-time fee of <strong>$49.00</strong> to access guides and application services.</p>
+                </div>
+                <form id="payment-form" onsubmit="processPayment(event)">
+                    <div class="input-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" placeholder="Name on card" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="4242 4242 4242 4242" required>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" required>
+                        </div>
+                        <div class="input-group">
+                            <label>CVC</label>
+                            <input type="text" placeholder="123" required>
+                        </div>
+                    </div>
+                    <div class="total-display">
+                        <span>Total:</span>
+                        <span class="price">$49.00</span>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Pay Now</button>
+                    <div class="gateway-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 3: USER DASHBOARD -->
+        <section id="dashboard" class="page-section">
+            <div class="container">
+                <div class="dashboard-welcome">
+                    <h2>Welcome to Your Dashboard</h2>
+                    <p>You have unlocked all premium features.</p>
+                </div>
+                <div class="dashboard-grid">
+                    <div class="dash-card" onclick="navigateTo('services')">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Business Guides</h3>
+                        <p>Read detailed instructions for registration.</p>
+                        <span class="link-arrow">View Services <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="dash-card" onclick="navigateTo('application')">
+                        <i class="fas fa-edit"></i>
+                        <h3>Submit Application</h3>
+                        <p>Fill out the form to start your process.</p>
+                        <span class="link-arrow">Start Now <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="dash-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>Support</h3>
+                        <p>Need help? Contact our team.</p>
+                        <span class="link-arrow" onclick="navigateTo('contact')">Contact <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SERVICES (Protected) -->
+        <section id="services" class="page-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Registration Services</h2>
+                    <p>Detailed guides and resources for your business formation.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon-box"><i class="fas fa-industry"></i></div>
+                        <h3>LTD Company Registration</h3>
+                        <p>Complete guide on registering a Private Limited Company. Includes Memorandum of Association, Articles of Association, and shareholder structures.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Separate Legal Entity</li>
+                            <li><i class="fas fa-check"></i> Limited Liability</li>
+                            <li><i class="fas fa-check"></i> Professional Structure</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-box"><i class="fas fa-users-cog"></i></div>
+                        <h3>LLC Company Registration</h3>
+                        <p>Form your Limited Liability Company with flexible management structures and pass-through taxation benefits.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Flexible Management</li>
+                            <li><i class="fas fa-check"></i> Less Compliance Burden</li>
+                            <li><i class="fas fa-check"></i> Asset Protection</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-box"><i class="fas fa-file-alt"></i></div>
+                        <h3>Documentation Guidance</h3>
+                        <p>Step-by-step assistance for all necessary legal documents, tax forms, and compliance certificates.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: APPLICATION FORM (Protected) -->
+        <section id="application" class="page-section">
+            <div class="container form-container">
+                <div class="form-header">
+                    <h2>Business Registration Application</h2>
+                    <p>Fill in the details below to start your registration process.</p>
+                </div>
+                <form id="app-form" onsubmit="submitApplication(event)">
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Country *</label>
+                            <input type="text" name="country" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Company Type *</label>
+                        <select name="type" required>
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="LTD">LTD (Private Limited Company)</option>
+                            <option value="LLC">LLC (Limited Liability Company)</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Proposed Business Name *</label>
+                            <input type="text" name="bname" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Country of Registration *</label>
+                            <input type="text" name="reg_country" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Business Activity *</label>
+                        <textarea name="activity" rows="3" placeholder="Brief description of business operations" required></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Upload Documents (CNIC/Passport) *</label>
+                        <div class="file-upload">
+                           <input type="file" id="doc-upload" name="document" required>
+                            <label for="doc-upload" class="file-label"><i class="fas fa-cloud-upload-alt"></i> Choose File</label>
+                            <span id="file-name">No file chosen</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Additional Notes</label>
+                        <textarea name="notes" rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Submit Application</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CONTACT -->
+        <section id="contact" class="page-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Have questions? Reach out to our support team.</p>
+                </div>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Business Avenue, London, UK</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@smartportal.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+44 123 456 7890</span>
+                        </div>
+                    </div>
+                   <form class="contact-form" onsubmit="sendMessage(event)">
+    <div class="input-group">
+        <label>Your Name</label>
+        <input type="text" name="name" required>
+    </div>
+
+    <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+    </div>
+
+    <div class="input-group">
+        <label>Message</label>
+        <textarea name="message" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn-primary">Send Message</button>
+</form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: ADMIN PANEL -->
+        <section id="admin" class="page-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Admin Panel</h2>
+                    <p>Manage users, payments, and applications.</p>
+                </div>
+                
+                <div class="admin-stats">
+                    <div class="stat-card blue">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>1,240</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="stat-info">
+                            <h3>$48,500</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>86</h3>
+                            <p>Pending Applications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-table-container">
+                    <h3>Recent Applications</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Company Type</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1023</td>
+                                <td>John Doe</td>
+                                <td>LTD</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td><button class="btn-sm">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#1022</td>
+                                <td>Sarah Smith</td>
+                                <td>LLC</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td><button class="btn-sm">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#1021</td>
+                                <td>Mike Johnson</td>
+                                <td>LTD</td>
+                                <td><span class="status-badge processing">Processing</span></td>
+                                <td><button class="btn-sm">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 SmartPortal Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- TOAST MESSAGE (LEFT SIDE NOTIFICATION) -->
+<div id="toast-message" class="toast-message"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
