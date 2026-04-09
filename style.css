@@ -130,6 +130,11 @@ nav a:hover { color: #1d6fa5; }
 
 .page-section.active { display: block; }
 
+.hero-section{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
 .toast-message{
 position: fixed;
 top: 20px;
